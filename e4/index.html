@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VUE.js - Example 03</title>
+</head>
+<body>
+    <div id="app">
+        <hello></hello>
+        <ul>
+            <!--
+            Create an instance of the todo-item component
+            for each todo in a todos array
+            -->
+            <todo-item v-for="todo in todos" v-bind:myitem="todo"></todo-item>
+        </ul>
+    </div>
+    
+    <script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
+    <script>
+        // Define a new component called hello
+        Vue.component('hello', {
+            template: '<h3>Hello World</h3>'
+        });
+
+        Vue.component('todo-item', {
+            // The todo-item component now accepts a
+            // "prop", which is like a custom attribute.
+            // This prop is called todo.
+            props: ['myitem'],
+            template: '<li>{{ myitem.text }}</li>'
+        });
+
+        new Vue({
+            el: '#app', 
+            data: {
+               todos: [
+                    {text: "Learn HTML"},
+                    {text: "Learn CSS"},
+                    {text: "Learn Javascript"},
+                    {text: "Learn Vue"},
+                    {text: "Build something awesome"}
+                ]
+            },
+            
+        })
+    </script>
+</body>
+</html>

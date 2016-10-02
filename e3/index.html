@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VUE.js - Example 03</title>
+</head>
+<body>
+    <div id="app">
+        <!-- Model -->
+        <input v-model="message"> 
+        <p>{{message}}</p>
+
+        <!-- Event Listen -->
+        <button v-on:click="reverseMessage">Reverse Message</button>
+    </div>
+    
+    <script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app', 
+            data: {
+                message: 'Hello Vue'
+            }, 
+            methods: {
+                reverseMessage: function(){
+                    this.message = this.message.split('').reverse().join('');
+                }
+            }
+        })
+    </script>
+</body>
+</html>
