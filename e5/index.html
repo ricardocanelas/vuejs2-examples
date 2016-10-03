@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>VUE.js - Example 05</title>
+</head>
+<body>
+<div id="app">
+
+    <!-- comp -->
+    <hello></hello>
+
+    <!-- Model -->
+    <input v-model="message">
+    <p>{{message}}</p>
+
+</div>
+
+<img src="https://vuejs.org/images/lifecycle.png">
+
+<script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
+
+<script>
+
+    Vue.component('hello', {
+        template: '<h3>Hello World</h3>',
+        mounted: function () {
+            console.log('=== mounted (hello-world) ===');
+        }
+    });
+
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Lifecycle'
+        },
+
+        created: function () {
+            console.log('=== created ===');
+            console.log('Message is: ' + this.message)
+        },
+
+        mounted: function () {
+            console.log('=== mounted ===');
+        },
+
+        updated: function () {
+            console.log('=== updated ===');
+            console.log('Message is now: ' + this.message)
+        }
+    })
+</script>
+</body>
+</html>

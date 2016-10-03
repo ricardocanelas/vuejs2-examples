@@ -11,3 +11,9 @@ Events and Model
 ## E4
 Components
 
+## E5
+Lifecycle
+
+## E6
+Template Syntax
+

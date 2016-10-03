@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VUE.js - Example 06</title>
+</head>
+<body>
+    <div id="app">
+
+        <!------------------ Interpolations --------------------------------->
+
+        <!-- Interpolations:text -->
+        <input v-model="message">
+        <p>{{message}}</p>
+        <p>My text: {{message}}</p>
+        <p v-once>My text: {{message}}</p>
+
+
+
+        <!-- Interpolations:html -->
+        <hr/>
+        <div v-html="rawHtml"></div>
+
+
+
+        <!-- Interpolations:attributes -->
+        <div v-bind:id="elemId"></div>
+        <button v-bind:disabled="someDynamicCondition">Button</button>
+
+
+
+        <!-- Interpolations:javascript-expression -->
+        {{ number + 1 }}
+        {{ ok ? 'YES' : 'NO' }}
+        {{ message.split('').reverse().join('') }}
+        <div v-bind:id="'list-' + id">list-{{id}}</div>
+
+
+
+        <!-- Interpolations:filter -->
+        <!-- can ONLY be used inside mustache bindings -->
+        {{ message | capitalize }}
+
+
+
+
+        <!------------------ Directives --------------------------------->
+        <p v-if="seen">Now you see me</p>
+
+
+
+        <!-- Directives:argument -->
+        <a v-bind:href="url">Link</a>
+        <a v-on:click="doSomething">Link</a>
+
+
+
+        <!-- Directives:modifiers -->
+        <form v-on:submit.prevent="onSubmit" action="x.page.html">
+            <button type="submit">Send Message</button>
+        </form>
+
+
+
+
+        <!------------------ Shorthands --------------------------------->
+
+        <!-- full syntax -->                  <!-- shorthand -->
+        <a v-bind:href="url"></a>             <a :href="url"></a>
+
+        <!-- full syntax -->                  <!-- shorthand -->
+        <a v-on:click="doSomething"></a>      <a @click="doSomething"></a>
+
+
+    </div>
+    
+    <script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app', 
+            data: {
+                message: 'hello Interpolations',
+                rawHtml: '<h3>My RawHtml</h3><small>Subtitle</small>',
+                elemId: 'productID',
+                someDynamicCondition: false,
+                number: 100,
+                ok: true,
+                id: 1394,
+                seen: true,
+                url: 'https://github.com/ricardocanelas'
+            },
+            filters: {
+                capitalize: function (value) {
+                    if (!value) return '';
+                    value = value.toString();
+                    return value.charAt(0).toUpperCase() + value.slice(1)
+                }
+            },
+            methods: {
+                doSomething: function () {
+                    console.log('--- do Something ---');
+                },
+                onSubmit: function () {
+                    console.log('--- submit and event.preventDefault() ---');
+                }
+            }
+        })
+    </script>
+</body>
+</html>
