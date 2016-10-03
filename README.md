@@ -17,3 +17,6 @@ Lifecycle
 ## E6
 Template Syntax
 
+## E7
+Computed Properties and Watchers
+

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VUE.js - Example 07</title>
+</head>
+<body>
+
+    <div id="app">
+        <!-- computed -->
+        <p>Original message: "{{ message }}"</p>
+        <p>Computed reversed message: "{{ reversedMessage }}"</p>
+
+
+        <!-- computed vs method -->
+        <hr/><h2>computed vs method</h2>
+
+        <input v-model="message">
+        <input v-model="messageForce" placeholder="type here for refresh NowComputed">
+
+        <p>{{ message }} <small>{{ messageForce}}</small></p>
+        <p>Via method: {{ nowMethod() }} (run again everytime some date change)</p>
+        <p>Via computed: {{ nowComputed }} (cache)</p>
+    </div>
+
+
+    <div id="app2">
+        <!-- computed vs watch -->
+        <hr/><h2>computed vs watch</h2>
+        <input v-model="firstName">
+        <input v-model="lastName">
+        <p>{{ fullName }} <br/> {{ fullNameComputer }}</p>
+    </div>
+
+    <div id="app3">
+        <!-- computed setter -->
+        <hr/><h2>computed setter</h2>
+        <input v-model="fullNameComputer">
+        <p>
+            FirstName: {{ firstName }} <br/>
+            LastName:  {{ lastName }} <br/>
+            Fullname:  {{ fullNameComputer }}
+        </p>
+    </div>
+
+    
+    <script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
+
+    <script>
+        var vm = new Vue({
+            el: '#app', 
+            data: {
+                message: 'HelloComputed',
+                messageForce: ''
+            },
+            methods:{
+                nowMethod: function () {
+                    return Date.now()
+                }
+            },
+            computed: {
+                reversedMessage: function () {
+                    return this.message.split('').reverse().join('')
+                },
+
+                nowComputed: function () {
+                    this.messageForce;
+                    // nowComputed there is relation with the messageForce data,
+                    // that mean it just will execute it after change that data
+                    return Date.now()
+                }
+            }
+        });
+
+        var vm2 = new Vue({
+            el: '#app2', // <--- app2
+            data: {
+                firstName: 'Foo',
+                lastName: 'Bar',
+                fullName: 'Foo Bar'
+            },
+            watch: {
+                firstName: function (val) {
+                    this.fullName = val + ' ' + this.lastName
+                },
+                lastName: function (val) {
+                    this.fullName = this.firstName + ' ' + val
+                }
+            },
+            // but..
+            // if you use computed it will better:
+            computed: {
+                fullNameComputer: function () {
+                    return this.firstName + ' ' + this.lastName
+                }
+            }
+        });
+
+
+        var vm3 = new Vue({
+            el: '#app3', // <--- app3
+            data: {
+                firstName: 'Foo',
+                lastName: 'Bar',
+                fullName: 'Foo Bar'
+            },
+            computed: {
+                fullNameComputer: {
+                    get: function () {
+                        return this.firstName + ' ' + this.lastName
+                    },
+                    set: function(newValue){
+                        var names = newValue.split(' ');
+                        this.firstName = names[0];
+                        this.lastName = names[names.length - 1]
+                    }
+
+                }
+            }
+        });
+
+
+
+
+
+
+    </script>
+</body>
+</html>
