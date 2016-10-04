@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VUE.js - Example 08</title>
+    <style>
+        .active{font-weight: bold;}
+        .text-danger{color: #dd3f35;}
+    </style>
+</head>
+<body>
+
+    <div id="app">
+
+        <!------------------------ class -------------------------!>
+        <!-- object -->
+        <p class="static" :class="{ active: isActive, 'text-danger': hasError }">Output: 'static active'</p>
+        <p class="static" :class="classObject">Output: 'static active text-danger'</p>
+
+        <!-- computed -->
+        <p class="static" :class="classComputed">Output: 'static active'</p>
+
+        <!-- array -->
+        <p class="static" :class="[activeClass, errorClass]">Output: 'static active text-danger'</p>
+        <p class="static" :class="[{ active: isActive }, errorClass]">Output: 'static active text-danger'</p>
+
+
+
+        <!------------------------ style -------------------------!>
+        <!-- it is the same way for object, computed, and array -->
+        <div :style="{ color: activeColor, fontSize: fontSize + 'px' }">FontSize15</div>
+
+        <!-- Vue will automatically detect and add appropriate prefixes to the applied styles-->
+        <div :style="{ transform: 'rotate(-28deg)', color: 'gray'}">Rotate</div>
+
+    </div>
+
+    
+    <script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                isActive: true,
+                hasError: false,
+                error: null,
+                classObject: {
+                    active: true,
+                    'text-danger': true
+                },
+                activeClass: 'active',
+                errorClass: 'text-danger',
+
+                activeColor: 'blue',
+                fontSize: 25
+            },
+            computed: {
+                classComputed: function () {
+                    return {
+                        active: this.isActive && !this.error,
+                        'text-danger': this.error && this.error.type === 'fatal',
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

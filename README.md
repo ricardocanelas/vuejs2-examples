@@ -20,3 +20,6 @@ Template Syntax
 ## E7
 Computed Properties and Watchers
 
+## E8
+Class and Style Bindings
+
