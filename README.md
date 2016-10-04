@@ -23,3 +23,6 @@ Computed Properties and Watchers
 ## E8
 Class and Style Bindings
 
+## E9
+Conditional Rendering
+

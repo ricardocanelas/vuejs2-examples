@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VUE.js - Example 09</title>
+</head>
+<body>
+
+    <div id="app">
+
+        <!------------------------ conditional :if ------------------------->
+
+        <!-- if -->
+        <h1 v-if="ok">Yes</h1>
+
+        <!-- With else  -->
+        <!-- The v-else element must immediately follow the v-if element -->
+        <hr/>
+        <h1 v-if="ok">Yes</h1>
+        <h1 v-else>No</h1>
+
+        <!-- we can use v-if on a <template> element,                          -->
+        <!-- which serves as an invisible wrapper.                             -->
+        <!-- The final rendered result will not include the <template> element -->
+        <hr/>
+        <template v-if="ok" style="background-color: beige">
+            <h1>Title</h1>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+        </template>
+
+
+
+
+
+        <!------------------------ conditional :show --------------------->
+
+        <h1 v-show="ok">Hello!</h1>
+
+
+
+
+
+        <!-------------------------- if vs show ------------------------->
+        <!-- v-if
+             is “real” conditional rendering because it ensures that event
+             listeners and child components inside the conditional block are
+             properly destroyed and re-created during toggles. -->
+
+        <!-- v-show
+             v-show is much simpler, just simple CSS-based toggling. -->
+
+
+    </div>
+
+    
+    <script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                ok: true
+            }
+        });
+    </script>
+</body>
+</html>
