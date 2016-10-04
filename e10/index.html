@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VUE.js - Example 10</title>
+</head>
+<body>
+
+    <div id="app">
+
+        <!-- for ---------------------------------------------------------->
+        <span v-for="n in 10">{{ n }}</span>
+        <li v-for="item in items">{{ item.message }} </li>
+        <li v-for="value in object">{{ value }} </li>
+
+        <li v-for="item of items">{{ item.message }} </li> <!-- you can use 'of' -->
+        
+        <li v-for="(item, index) in items">{{ index }}: {{ item.message }} </li>
+        <li v-for="(value, key) in object">{{ key }}: {{ value }} </li>
+        <li v-for="(value, key, index) in object">{{ index }} {{ key }}: {{ value }} </li>
+        
+        <ul>
+            <template v-for="item in items">
+                <li>{{ item.message }}</li>
+                <li class="divider">- - -</li>
+            </template>
+        </ul>
+
+
+        <!-- array -------------------------------------------------------->
+        <!-- mutation methods
+             - push()
+             - pop()
+             - shift()
+             - unshift()
+             - splice()
+             - sort()
+             - reverse() --> 
+
+        <!--  Vue cannot detect the following changes to an array: 
+              1. When you directly set an item with the index, e.g. vm.items[indexOfItem] = newValue
+              2. When you modify the length of the array, e.g. vm.items.length = newLength --> 
+
+        <!-- To overcome caveat 1 --> 
+        <!-- Vue.set(products.items, indexOfItem, newValue)  
+             or products.items.splice(indexOfItem, 1, newValue)--> 
+        
+        <!-- To overcome caveat 2 --> 
+        <!-- products.items.splice(newLength)--> 
+
+        <!-- filtered or sorted ------------------------------------------->
+        <li v-for="n in evenNumbers">{{ n }}</li>
+        <li v-for="n in even(numbers)">{{ n }}</li>
+
+    </div>
+
+    
+    <script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                items: [
+                    { message: 'Foo' },
+                    { message: 'Bar' }
+                ],
+                object: {
+                    FirstName: 'Ricardo',
+                    LastName: 'Canelas',
+                    Age: 29
+                },
+                numbers: [ 1, 2, 3, 4, 5 ]
+            },
+            computed: {
+                evenNumbers: function () {
+                    return this.numbers.filter(function (number) {
+                        return number % 2 === 0
+                    })
+                },
+                even: function (numbers) {
+                    return numbers.filter(function (number) {
+                        return number % 2 === 0
+                    })
+                }
+            }
+        });
+    </script>
+</body>
+</html>
