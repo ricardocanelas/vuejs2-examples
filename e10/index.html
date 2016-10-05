@@ -28,29 +28,30 @@
 
 
         <!-- array -------------------------------------------------------->
-        <!-- mutation methods
+        <!-- mutation methods:
              - push()
              - pop()
              - shift()
              - unshift()
              - splice()
              - sort()
-             - reverse() --> 
+             - reverse()
 
-        <!--  Vue cannot detect the following changes to an array: 
+            Vue cannot detect the following changes to an array:
               1. When you directly set an item with the index, e.g. vm.items[indexOfItem] = newValue
-              2. When you modify the length of the array, e.g. vm.items.length = newLength --> 
+                 to overcome:
+                  - Vue.set(products.items, indexOfItem, newValue)
+                  - or products.items.splice(indexOfItem, 1, newValue)
 
-        <!-- To overcome caveat 1 --> 
-        <!-- Vue.set(products.items, indexOfItem, newValue)  
-             or products.items.splice(indexOfItem, 1, newValue)--> 
-        
-        <!-- To overcome caveat 2 --> 
-        <!-- products.items.splice(newLength)--> 
+              2. When you modify the length of the array, e.g. vm.items.length = newLengt
+                 to overcome:
+                  - products.items.splice(newLength) -->
+
+
 
         <!-- filtered or sorted ------------------------------------------->
-        <li v-for="n in evenNumbers">{{ n }}</li>
-        <li v-for="n in even(numbers)">{{ n }}</li>
+        <li v-for="n in evenNumbers">{{ n }}</li>  <!-- using computed -->
+        <li v-for="n in even(numbers)">{{ n }}</li> <!-- using method -->
 
     </div>
 
@@ -77,7 +78,9 @@
                     return this.numbers.filter(function (number) {
                         return number % 2 === 0
                     })
-                },
+                }
+            },
+            methods:{
                 even: function (numbers) {
                     return numbers.filter(function (number) {
                         return number % 2 === 0
