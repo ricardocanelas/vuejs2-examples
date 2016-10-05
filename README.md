@@ -29,4 +29,7 @@ Conditional Rendering
 ## E10 
 List Rendering (v-for, filtered and sorted)
 
+## E11 
+Event Handling
+
 

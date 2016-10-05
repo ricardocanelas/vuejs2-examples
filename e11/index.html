@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VUE.js - Example 11</title>
+</head>
+<body>
+
+    <div id="app">
+
+        <button v-on:click="counter += 1">Add 1</button>
+        <button @click="counter += 2">Add 2</button>
+        <p>The button above has been clicked {{ counter }} times.</p>
+
+        <button @click="greet">Greet</button>
+
+        <button @click="say('hi')">Say hi</button>
+
+        <button @click="warn('Form cannot be submitted yet.', $event)">Submit</button>
+
+
+
+
+        <!-- events modifiers ---------------------------------------------------------->
+
+        <a @click.stop="doThis">(stop)</a>                  <!-- the click event's propagation will be stopped -->
+
+        <form @submit.prevent="onSubmit">(prevent)</form>   <!-- the submit event will no longer reload the page -->
+
+        <a @click.stop.prevent="doThat">(stop+prevent)</a>  <!-- modifiers can be chained -->
+
+        <form @submit.prevent></form>                       <!-- just the modifier -->
+
+        <div @click.capture="doThis">(capture)</div>        <!-- use capture mode when adding the event listener -->
+
+
+        <div @click.self="doThat">(self)</div>              <!-- only trigger handler if event.target is the element itself -->
+                                                            <!-- i.e. not from a child element -->
+
+
+
+
+        <!-- keys modifiers ---------------------------------------------------------->
+        <!-- enter, tab, delete, esc, space, up, down, left, right -->
+
+        <input @keyup.13="onSubmit"> <!-- 13 = enter -->
+        <input @keydown.enter="onSubmit">
+
+        <input v-on:keyup.v="say('That is the first letter in Vue')">  <!-- single letter  'v' -->
+
+        <input v-on:keyup.f5="say('you hit f5')">  <!-- custome keyup -->
+
+        
+    </div>
+
+    
+    <script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
+
+    <script>
+
+        // enable v-on:keyup.f5
+        Vue.config.keyCodes.f5 = 116;
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                counter: 1,
+                name: 'Example11.js'
+            },
+            methods: {
+                greet: function (event) {
+                    alert('Hello ' + this.name + '!');
+                    alert(event.target.tagName);
+                },
+                say: function (message) {
+                    alert(message);
+                },
+                warn: function (message, event) {
+                    // now we have access to the native event
+                    if (event) event.preventDefault();
+                    alert(message);
+                },
+                doThis: function(){ console.log('doThis')},
+                onSubmit: function(){ console.log('onSubmit')},
+                doThat: function(){ console.log('doThat')},
+            }
+        });
+
+        // you can invoke methods in JavaScript too
+        // vm.greet();
+
+    </script>
+</body>
+</html>
