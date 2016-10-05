@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VUE.js - Example 13</title>
+</head>
+<body>
+
+    <div id="app">
+        <hello></hello>
+        <my-component></my-component>
+        <my-component2 refnumber="A90239"></my-component2>
+        <my-component3 @my-event="sayIt"></my-component3>
+        
+        <table>
+            <tr><td>Name</td><td>City</td></tr>
+            <tr is='my-row'></tr>
+        </table>
+    </div>
+
+    
+    <script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
+
+    <script>
+        
+        var helloComp = {
+            template: '<h3>Hello World</h3>'
+        }
+
+        // global register
+        Vue.component('my-component', {
+            template: '<div>A custom component!</div>'
+        })
+
+        Vue.component('my-component2', {
+            template: '<div>ID: {{code}} - {{name}} - {{refnumber}}</div>',
+            data: function(){ // should be a function.. and return a object
+                return {
+                    code: 01, 
+                    name: 'Product A'
+                }
+            },
+            props: ['refnumber'],
+        })
+
+        Vue.component('my-component3', {
+            template: '<button type="button" @click="onClickMe">Click Here</button>',
+            methods: {
+                onClickMe: function(){
+                    console.log('onClickMe');
+                    this.$emit('my-event');
+                }
+            }
+        })
+
+        Vue.component('my-row', {
+            template: '<tr><td>Ricardo</td><td>Dublin</td></tr>'
+        })
+
+        var vm = new Vue({
+            el: '#app',
+            components:{
+                hello: helloComp // local register
+            }, 
+            methods:{
+                sayIt: function(){
+                    console.log('...Say');
+                }
+            }
+        });
+
+
+
+    </script>
+</body>
+</html>
