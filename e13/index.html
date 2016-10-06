@@ -7,30 +7,65 @@
 <body>
 
     <div id="app">
+
+        <!--  Basic -->
         <hello></hello>
         <my-component></my-component>
         <my-component2 refnumber="A90239"></my-component2>
-        <my-component3 @my-event="sayIt"></my-component3>
-        
+        <hr/>
+
+
+        <!--  xTemplate -->
+        <hello-world></hello-world>
+        <hr/>
+
+
+        <!--  if contains a lot of static content.. use v-once  -->
+        <terms-of-service></terms-of-service>
+        <hr/>
+
+
+
+        <!--  DOM Template Parsing Caveats  -->
+        <!-- <ul>, <ol>, <select>, <table>  -->
         <table>
             <tr><td>Name</td><td>City</td></tr>
             <tr is='my-row'></tr>
         </table>
+        <hr/>
+
+
+        <!--  Custom Events -->
+        <my-component3 @my-event="sayIt"></my-component3>
+        <hr/>
+
+
+        <my-input label="Message" v-model="message"></my-input> <!-- or.. -->
+        <my-input label="Message" v-bind:value="message" v-on:input="message = arguments[0]"></my-input>
+        <!-- v-model is equal..
+            <input v-bind:value="message" v-on:input="message = $event.target.value"> -->
+        {{ message }}<hr/>
+
     </div>
 
-    
+
+    <script type="text/x-template" id="hello-world-template">
+        <p>Hello hello hello It is a XTemplate</p>
+    </script>
+
     <script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
 
     <script>
         
         var helloComp = {
             template: '<h3>Hello World</h3>'
-        }
+        };
 
-        // global register
+        // global register --------------------------------------------------------------
         Vue.component('my-component', {
             template: '<div>A custom component!</div>'
-        })
+        });
+
 
         Vue.component('my-component2', {
             template: '<div>ID: {{code}} - {{name}} - {{refnumber}}</div>',
@@ -40,8 +75,9 @@
                     name: 'Product A'
                 }
             },
-            props: ['refnumber'],
-        })
+            props: ['refnumber']
+        });
+
 
         Vue.component('my-component3', {
             template: '<button type="button" @click="onClickMe">Click Here</button>',
@@ -51,16 +87,65 @@
                     this.$emit('my-event');
                 }
             }
-        })
+        });
+
+
+
+        Vue.component('hello-world', {
+            template: '#hello-world-template'
+        });
+
+
+
+        Vue.component('terms-of-service', {
+            template: '\
+            <div v-once>\
+                <h1>Terms of Service</h1>\
+                ... a lot of static content ...\
+            </div>\
+            '
+        });
+
+
 
         Vue.component('my-row', {
             template: '<tr><td>Ricardo</td><td>Dublin</td></tr>'
-        })
+        });
+
+
+        
+        Vue.component('my-input', {
+            props: ['value', 'label'],
+            template: '\
+                <div class="form-group">\
+                  <label v-bind:for="randomId">{{ label }}:</label>\
+                  <input v-bind:id="randomId" v-bind:value="value" v-on:input="onInput">\
+                </div>\
+            ',
+            data: function () {
+                return {
+                    randomId: 'input-' + Math.random()
+                }
+            },
+            methods: {
+                onInput: function (event) {
+                    console.log(event.target.value);
+                    this.$emit('input', event.target.value)
+                }
+            }
+        });
+
+
+        // -----------------------------------------------------------------------
+
 
         var vm = new Vue({
             el: '#app',
+            data:{
+                message: 'hello'
+            },
             components:{
-                hello: helloComp // local register
+                hello: helloComp // <- local register
             }, 
             methods:{
                 sayIt: function(){
@@ -68,9 +153,6 @@
                 }
             }
         });
-
-
-
     </script>
 </body>
 </html>
