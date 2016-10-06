@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VUE.js - Example 15</title>
+<link href="https://necolas.github.io/normalize.css/5.0.0/normalize.css" rel="stylesheet" type="text/css">
+<style>
+
+    /*--  Transition-Classes -- */
+    .my-transition-enter-active, .my-transition-leave-active {
+        transition: opacity .5s
+    }
+    .my-transition-enter, .my-transition-leave-active {
+        opacity: 0
+    }
+
+    /*--  CSS-Transitions -- */
+    /* Enter and leave animations can use different */
+    /* durations and timing functions.              */
+    .slide-fade-enter-active {
+        transition: all .3s ease;
+    }
+    .slide-fade-leave-active {
+        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter, .slide-fade-leave-active {
+        padding-left: 10px;
+        opacity: 0;
+    }
+
+    /*--  CSS-Animations -- */
+    .bounce-enter-active {
+        animation: bounce-in .5s;
+    }
+    .bounce-leave-active {
+        animation: bounce-out .5s;
+    }
+    @keyframes bounce-in {
+        0% {
+            transform: scale(0);
+        }
+        50% {
+            transform: scale(1.5);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    @keyframes bounce-out {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.5);
+        }
+        100% {
+            transform: scale(0);
+        }
+    }
+
+</style>
+</head>
+<body>
+
+    <div id="app">
+
+        <img src="https://vuejs.org/images/transition.png" style="max-width: 750px">
+        <hr/>
+
+
+        <!-- Transition-Classes -->
+        <button @click="show = !show">Toggle</button>
+        <transition name="my-transition">
+            <p v-if="show">hello</p>
+        </transition>
+        <hr/>
+
+
+
+        <!-- CSS-Transitions -->
+        <button @click="show2 = !show2"> Toggle render</button>
+        <transition name="slide-fade">
+            <p v-if="show2">hello</p>
+        </transition>
+        <hr/>
+
+
+
+        <!-- CSS-Animations -->
+        <button @click="show3 = !show3"> Toggle render</button>
+        <transition name="bounce">
+            <p v-if="show3">Look at me!</p>
+        </transition>
+        <hr/>
+
+
+
+        <!-- Custom-Transition-Classes -->
+        <link href="https://unpkg.com/animate.css@3.5.1/animate.min.css" rel="stylesheet" type="text/css">
+        <button @click="show4 = !show4">Toggle render</button>
+        <transition
+                name="custom-classes-transition"
+                enter-active-class="animated tada"
+                leave-active-class="animated bounceOutRight"
+        >
+            <p v-if="show4">hello</p>
+        </transition>
+        <hr/>
+
+
+
+        <!-- JavaScript-Hooks -->
+        <!-- <transition :css='false'> It’s also a good idea to explicitly add v-bind:css="false"
+        for JavaScript-only transitions so that Vue can skip the CSS detection.  -->
+        <button @click="show5 = !show5">Toggle render</button>
+        <transition
+                v-on:before-enter="beforeEnter"
+                v-on:enter="enter"
+                v-on:after-enter="afterEnter"
+                v-on:enter-cancelled="enterCancelled"
+                v-on:before-leave="beforeLeave"
+                v-on:leave="leave"
+                v-on:after-leave="afterLeave"
+                v-on:leave-cancelled="leaveCancelled"
+        >
+            <p v-if="show5">hello</p>
+        </transition>
+        <hr/>
+    </div>
+
+
+
+    <!-- JavaScript-Hooks-With-VelocityJs -->
+    <div id="appVelocity" style="position: relative; display: block">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+        <button @click="show6 = !show6">Toggle</button>
+        <transition
+                v-on:before-enter="beforeEnter"
+                v-on:enter="enter"
+                v-on:leave="leave"
+                v-bind:css="false"
+        >
+            <div v-if="show6">Demo</div>
+        </transition>
+
+    </div>
+
+
+
+    
+    <script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
+
+    <script>
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                show: true,
+                show2: true,
+                show3: true,
+                show4: true,
+                show5: true
+            },
+
+            methods: {
+                // --------
+                // ENTERING
+                // --------
+                beforeEnter: function (el) {
+                    console.log('beforeEnter');
+                },
+                // the done callback is optional when
+                // used in combination with CSS
+                enter: function (el, done) {
+                    console.log('enter');
+                    done();
+                },
+                afterEnter: function (el) {
+                    console.log('afterEnter');
+                    console.log('---');
+                },
+                enterCancelled: function (el) {
+                    console.log('enterCancelled');
+                },
+                // --------
+                // LEAVING
+                // --------
+                beforeLeave: function (el) {
+                    console.log('beforeLeave');
+                },
+                // the done callback is optional when
+                // used in combination with CSS
+                leave: function (el, done) {
+                    console.log('leave');
+                    done();
+                },
+                afterLeave: function (el) {
+                    console.log('afterLeave');
+                    console.log('---');
+                },
+                // leaveCancelled only available with v-show
+                leaveCancelled: function (el) {
+                    console.log('leaveCancelled');
+                }
+            }
+        });
+
+
+
+        var viewModal = new Vue({
+            el: '#appVelocity',
+            data: {
+                show6: false
+            },
+            methods: {
+                beforeEnter: function (el) {
+                    el.style.opacity = 0
+                },
+                enter: function (el, done) {
+                    Velocity(el, { opacity: 1, fontSize: '1.4em' }, { duration: 300 });
+                    Velocity(el, { fontSize: '1em' }, { complete: done })
+                },
+                leave: function (el, done) {
+                    Velocity(el, { translateX: '15px', rotateZ: '50deg' }, { duration: 600 });
+                    Velocity(el, { rotateZ: '100deg' }, { loop: 2 });
+                    Velocity(el, {
+                        rotateZ: '45deg',
+                        translateY: '30px',
+                        translateX: '30px',
+                        opacity: 0
+                    }, { complete: done })
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
