@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VUE.js - Example 14</title>
+</head>
+<body>
+
+    <div id="app">
+
+        <!--  Content-Distribution-with-Slots -->
+
+        <app-layout>
+
+            <h1 slot="header">Here might be a page title</h1>
+
+            <p>{{ message }}</p>
+            <p>A paragraph for the main content.</p>
+            <p>And another one.</p>
+
+            <template slot="footer"> <!-- or using <template> -->
+                <p>Here's some contact info</p>
+            </template>
+
+        </app-layout>
+
+    </div>
+
+    
+    <script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
+
+    <script>
+
+
+        // <app-layout>
+        Vue.component('app-layout', {
+            template: '\
+            <div class="container">\
+                <header>\
+                    <slot name="header"></slot>\
+                    <hr/>\
+                </header>\
+                <main>\
+                    <slot></slot>\
+                </main>\
+                <footer>\
+                    <hr/>\
+                    <slot name="footer"></slot>\
+                </footer>\
+            </div>'
+            }
+        );
+
+        // -----------------------------------------------------------------------
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello World'
+            }
+        });
+    </script>
+</body>
+</html>

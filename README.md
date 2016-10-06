@@ -35,4 +35,10 @@ Event Handling
 ## E12 
 Form Input Bindings
 
+## E13 
+Components
+
+## E14
+Components - Content Distribution with Slot
+
 
