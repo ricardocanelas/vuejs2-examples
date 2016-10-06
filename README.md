@@ -32,4 +32,7 @@ List Rendering (v-for, filtered and sorted)
 ## E11 
 Event Handling
 
+## E12 
+Form Input Bindings
+
 

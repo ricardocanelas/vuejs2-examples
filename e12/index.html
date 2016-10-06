@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VUE.js - Example 12</title>
+</head>
+<body>
+
+    <div id="app">
+
+        <!-- basic -->
+        <input v-model="message" placeholder="edit me"><br/>
+        <textarea v-model="message" placeholder="add multiple lines"></textarea>
+        <p>Message is: {{ message }}</p>
+        <p style="white-space: pre">{{ message }}</p>
+
+        <!-- lazy --> <hr/><h2>Modifier: Lazy</h2>
+        <input v-model.lazy="messageLazy"> (lazy) (after focusOut)<br/>
+        <p>{{ messageLazy }}</p>
+
+        <!-- number --> <hr/><h2>Modifier: Number</h2>
+        <input v-model.number="num"><br/>
+        <p>{{ num }}</p>
+
+        <!-- trim --> <hr/><h2>Modifier: Trim</h2>
+        <input v-model.trim="strTrim"><br/>
+        <p>{{ strTrim }}</p>
+
+
+
+        <!-- checkbox --> <hr/><h2>Checkbox <small>Simple</small></h2>
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{ checked }}</label>
+
+
+
+        <!-- checkbox --> <hr/><h2>Checkbox</h2>
+        <input type="checkbox" id="ricardo" value="Ricardo" v-model="checkedNamesCheckbox">
+        <label for="ricardo">Ricardo</label>
+        <input type="checkbox" id="canelas" value="Canelas" v-model="checkedNamesCheckbox">
+        <label for="canelas">Canelas</label>
+        <input type="checkbox" id="wilson" value="Wilson" v-model="checkedNamesCheckbox">
+        <label for="wilson">Wilson</label><br>
+        <span>Checked names: {{ checkedNamesCheckbox }}</span>
+
+
+
+        <!-- radio --> <hr/><h2>Radio</h2>
+        <input type="radio" id="one" value="One" v-model="picked">
+        <label for="one">One</label>
+        <br>
+        <input type="radio" id="two" value="Two" v-model="picked">
+        <label for="two">Two</label>
+        <br>
+        <span>Picked: {{ picked }}</span>
+
+
+
+        <!-- select --> <hr/><h2>Select</h2>
+        <select v-model="selected">
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <span>Selected: {{ selected }}</span>
+
+
+
+        <!-- select --> <hr/><h2>Select</h2>
+        <select v-model="selectedMultiple" multiple>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <br>
+        <span>Selected: {{ selectedMultiple }}</span>
+
+
+
+    </div>
+
+    
+    <script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
+
+    <script>
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello World',
+                messageLazy: '',
+                num: 12,
+                strTrim: 'Hello  Space         World',
+                checked: false,
+                checkedNamesCheckbox: [],
+                checkedNamesRadio: [],
+                picked: '',
+                selected: '',
+                selectedMultiple: [],
+            },
+        });
+
+    </script>
+</body>
+</html>
