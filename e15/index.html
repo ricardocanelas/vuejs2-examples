@@ -64,14 +64,23 @@
 
     <div id="app">
 
-        <img src="https://vuejs.org/images/transition.png" style="max-width: 750px">
-        <hr/>
+        <img src="https://vuejs.org/images/transition.png" style="max-width: 750px; height: 299px;"><hr/>
 
 
         <!-- Transition-Classes -->
         <button @click="show = !show">Toggle</button>
         <transition name="my-transition">
             <p v-if="show">hello</p>
+        </transition>
+        <hr/>
+
+
+
+        <!-- with Appear attribute-->
+        <!-- https://vuejs.org/guide/transitions.html#Transitions-on-Initial-Render -->
+        <button @click="showX = !showX">Toggle</button>
+        <transition name="my-transition" appear>
+            <p v-if="showX">hello</p>
         </transition>
         <hr/>
 
@@ -156,6 +165,7 @@
             el: '#app',
             data: {
                 show: true,
+                showX: true,
                 show2: true,
                 show3: true,
                 show4: true,
