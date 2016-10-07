@@ -6,7 +6,8 @@
 </head>
 <body>
     <div id="app">
-        <p v-bind:slug="slug_msg">{{ message }}</p>
+        <p v-bind:updated-at="messageUpdatedAt">{{ message }}</p>
+        <!-- output: <p updated-at="01 October, 2016">Hello World</p> -->
     </div>
     <script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
     <script>
@@ -14,7 +15,7 @@
             el: '#app', 
             data: {
                 message: 'Hello World',
-                slug_msg: 'hello-world'
+                messageUpdatedAt: '01 October, 2016'
             }
         })
     </script>
