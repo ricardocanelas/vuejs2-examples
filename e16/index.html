@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VUE.js - Example 16</title>
+<link href="https://necolas.github.io/normalize.css/5.0.0/normalize.css" rel="stylesheet" type="text/css">
+<script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
+<style>
+
+    body{margin:25px;}
+    hr{margin: 25px 0px; border-top:1px solid #cccccc;}
+
+    /*--  CSS-Transitions -- */
+    /* Enter and leave animations can use different */
+    /* durations and timing functions.              */
+    .slide-fade-enter-active {
+        transition: all 1.3s ease;
+    }
+    .slide-fade-leave-active {
+        transition: all 1.8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter, .slide-fade-leave-active {
+        padding-left: 15px;
+        opacity: 0;
+    }
+
+</style>
+</head>
+<body>
+
+    <div id="appElements">
+
+        <h2>Between Elements</h2>
+
+        <select v-model="docState">
+            <option v-for="state of states" :value="state">{{ state }}</option>
+        </select> <hr/>
+
+
+
+        <!-- static -->
+        <transition name="slide-fade" appear>
+            <button v-if="docState === 'saved'"   key="saved"  >Edit  </button>
+            <button v-if="docState === 'edited'"  key="edited" >Save  </button>
+            <button v-if="docState === 'editing'" key="editing">Cancel</button>
+        </transition> (wihout mode)<hr/>
+
+
+
+        <!-- static with in-out-->
+        <transition name="slide-fade" mode="in-out" appear>
+            <button v-if="docState === 'saved'"   key="saved"  >Edit  </button>
+            <button v-if="docState === 'edited'"  key="edited" >Save  </button>
+            <button v-if="docState === 'editing'" key="editing">Cancel</button>
+        </transition> (mode = 'in-out')<hr/>
+
+
+
+        <!-- static with out-in-->
+        <transition name="slide-fade" mode="out-in" appear>
+            <button v-if="docState === 'saved'"   key="saved"  >Edit  </button>
+            <button v-if="docState === 'edited'"  key="edited" >Save  </button>
+            <button v-if="docState === 'editing'" key="editing">Cancel</button>
+        </transition> (mode = 'out-in')<hr/>
+
+
+
+        <!-- dynamic -->
+        <transition>
+            <button :key="docState">{{ buttonMessage }}</button>
+        </transition>
+
+
+    </div>
+
+    <script>
+
+        var vm1 = new Vue({
+            el: '#appElements',
+            data: {
+                states: ['saved', 'edited', 'editing'],
+                docState: 'edited'
+            },
+            computed: {
+                buttonMessage: function () {
+                    switch (this.docState) {
+                        case 'saved': return 'Edit';
+                        case 'edited': return 'Save';
+                        case 'editing': return 'Cancel';
+                    }
+                }
+            }
+        });
+
+    </script>
+
+
+    <!-- --------------------------------------------------------------------------------------------- -->
+    <!-- we don’t even need the key attribute -->
+
+
+    <div id="appBetweenComponents">
+
+        <hr/><h2>Between Components</h2>
+
+        <select v-model="myView">
+            <option value="v-a">V-A</option>
+            <option value="v-b">V-B</option>
+        </select> <br/><br/>
+
+
+        <transition name="slide-fade" mode="out-in">
+            <component v-bind:is="myView"></component>
+        </transition>
+
+    </div>
+
+    <script>
+
+        var vm2 = new Vue({
+            el: '#appBetweenComponents',
+            data: {
+                myView: 'v-a'
+            },
+            components: {
+                'v-a': {
+                    template: '<div>Component A</div>'
+                },
+                'v-b': {
+                    template: '<div>Component B</div>'
+                }
+            }
+        });
+
+    </script>
+
+</body>
+</html>

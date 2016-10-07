@@ -44,4 +44,7 @@ Components - Content Distribution with Slot
 ## E15
 Transitioning - Single Elements or Component 
 
+## E16
+Transitioning - Between Elements and Components
+
 
