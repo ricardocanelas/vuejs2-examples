@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VUE.js - Example 20</title>
+</head>
+<body>
+
+    <div id="app">
+        <input type="text" v-focus value='GLobal'>
+        <input type="text" v-padding-it value='Local'>
+        <input type="text" v-inputdefault='message' value='Local'>
+        <div id="hook-arguments-example" v-demo:hello.a.b="message"></div>
+        <hr/>
+        <div type="text" v-color-swatch='{color:"#f03e3C"}'>Color</div>
+    </div>
+
+    <script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
+
+    <script>
+
+        // Register a GLOBAL custom directive called v-focus
+        Vue.directive('focus', {
+            // When the bound element is inserted into the DOM...
+            inserted: function (el) {
+                // Focus the element
+                el.focus()
+            }
+        });
+
+        // using binding
+        Vue.directive('inputdefault', {
+            inserted: function (el, binding, vnode) {
+                el.value = 'literal: ' +  binding.expression + ' or bind: ' +  binding.value + ' (' + binding.name + ')';
+           }
+        })
+
+        // full example
+        Vue.directive('demo', {
+            bind: function (el, binding, vnode) {
+                var s = JSON.stringify
+                el.innerHTML =
+                'name: '       + s(binding.name) + '<br>' +
+                'value: '      + s(binding.value) + '<br>' +
+                'expression: ' + s(binding.expression) + '<br>' +
+                'argument: '   + s(binding.arg) + '<br>' +
+                'modifiers: '  + s(binding.modifiers) + '<br>' +
+                'vnode keys: ' + Object.keys(vnode).join(', ')
+            }
+        });
+
+        //shorthand (same behavior on bind and update)
+        Vue.directive('color-swatch', function (el, binding) {
+            el.style.backgroundColor = binding.value.color;
+        })
+
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                message:'Iceland'
+            },
+            directives:{ // Register a LOCAL custom directive 
+                paddingIt: {
+                    bind: function(){},
+                    inserted: function (el){
+                        el.style.margin = '20px';
+                        el.style.padding = '20px';
+                    },
+                    update: function(){},
+                    componentUpdated: function(){},
+                    unbind: function(){}
+                }
+            }
+        });
+
+    </script>
+
+</body>
+</html>

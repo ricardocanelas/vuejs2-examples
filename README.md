@@ -55,3 +55,6 @@ Transitioning - State
 
 ## E19
 Transitioning - Render Functions
+
+## E20
+Custom Directives
