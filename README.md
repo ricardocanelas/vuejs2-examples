@@ -53,4 +53,5 @@ Transitioning - List Transitions
 ## E18
 Transitioning - State
 
-
+## E19
+Transitioning - Render Functions
