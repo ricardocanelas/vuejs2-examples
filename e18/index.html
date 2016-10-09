@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VUE.js - Example 18</title>
+<link href="https://necolas.github.io/normalize.css/5.0.0/normalize.css" rel="stylesheet" type="text/css">
+<style>
+    body{margin:25px;}
+    hr{margin: 25px 0px; border-top:1px solid #cccccc;}
+
+    /*** app2 ***/
+    .app-2-color-preview {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+    }
+
+</style>
+</head>
+<body>
+
+    <!-- APP 1 ---------------------------------------------------------->
+
+    <div id="app">
+        <input v-model.number="number" type="number" step="20">
+        <p>{{ animatedNumber }}</p>
+    </div>
+
+
+    <!-- APP 2 ---------------------------------------------------------->
+
+    <div id="app-2">
+        <input
+            v-model="colorQuery"
+            v-on:keyup.enter="updateColor"
+            placeholder="Enter a color"
+        >
+        <button v-on:click="updateColor">Update</button>
+        <p>Preview:</p>
+        <span
+            v-bind:style="{ backgroundColor: tweenedCSSColor }"
+            class="app-2-color-preview"
+        ></span>
+        <p>{{ tweenedCSSColor }}</p>
+    </div>
+
+
+    <!-- APP 3 ---------------------------------------------------------->
+
+    
+
+
+
+    <script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
+    <script src="https://unpkg.com/tween.js@16.3.4"></script>
+    <script src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+
+    <script>
+
+        var vm1 = new Vue({
+            el: '#app',
+            data: {
+                number: 0,
+                animatedNumber: 0
+            },
+            watch: {
+                number: function(newValue, oldValue) {
+                var vm = this
+                function animate (time) {
+                    requestAnimationFrame(animate)
+                    TWEEN.update(time)
+                }
+                new TWEEN.Tween({ tweeningNumber: oldValue })
+                    .easing(TWEEN.Easing.Quadratic.Out)
+                    .to({ tweeningNumber: newValue }, 500)
+                    .onUpdate(function () {
+                    vm.animatedNumber = this.tweeningNumber.toFixed(0)
+                    })
+                    .start()
+                animate()
+                }
+            }
+        });
+
+        var Color = net.brehaut.Color
+        var vm2 = new Vue({
+            el: '#app-2',
+            data: {
+                colorQuery: '',
+                color: {
+                red: 0,
+                green: 0,
+                blue: 0,
+                alpha: 1
+                },
+                tweenedColor: {}
+            },
+            created: function () {
+                this.tweenedColor = Object.assign({}, this.color)
+            },
+            watch: {
+                color: function () {
+                function animate (time) {
+                    requestAnimationFrame(animate)
+                    TWEEN.update(time)
+                }
+                new TWEEN.Tween(this.tweenedColor)
+                    .to(this.color, 750)
+                    .start()
+                animate()
+                }
+            },
+            computed: {
+                tweenedCSSColor: function () {
+                return new Color({
+                    red: this.tweenedColor.red,
+                    green: this.tweenedColor.green,
+                    blue: this.tweenedColor.blue,
+                    alpha: this.tweenedColor.alpha
+                }).toCSS()
+                }
+            },
+            methods: {
+                updateColor: function () {
+                this.color = new Color(this.colorQuery).toRGB()
+                this.colorQuery = ''
+                }
+            }
+        });
+
+    </script>
+
+
+</body>
+</html>
