@@ -1,0 +1,11 @@
+{
+  "status-codes": "OK|ZERO_RESULTS|OVER_QUERY_LIMIT|REQUEST_DENIED|INVALID_REQUEST|UNKNOWN_ERROR",
+  "status": "OK",
+  "results": [
+    {"id":1, "name":"Sports"},
+    {"id":2, "name":"Magazines"},
+    {"id":3, "name":"Travel"},
+    {"id":4, "name":"World"},
+    {"id":5, "name":"Tecnology"}
+  ]
+}

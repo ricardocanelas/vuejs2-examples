@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>VUE.js - Demo 01</title>
+<link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="app" class="wrap container">
+
+
+        <!-- header
+        ================================================= -->
+        <header class="row">
+            <div class="col-xs-12">
+                <h1>First Demo</h1>
+            </div>
+        </header>
+
+
+        <!-- list-posts
+        ================================================= -->
+        <div v-show="canShowListPosts">
+            <div id="categories" class="row">
+                <div class="col-xs-12">
+                    Category:
+                    <select v-model="category_id">
+                        <option value="0">All</option>
+                        <option v-for="category in categories" :value="category.id">
+                            {{category.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="posts" class="row">
+                <template v-for="post in list">
+                    <div class="col-xs-6 col-md-4 item" @click="showSinglePost(post)">
+                        <div class="item-container">
+                            <div class="title">{{ post.title }}</div>
+                            <div class="image"><img src="images/iceland.jpg"></div>
+                            <div class="excerpt">{{ post.excerpt }}</div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <div class="row" v-show="canShowLoadmoreButton">
+                <div class="col-xs-12">
+                    <button class="btn btn-default" @click="pageCurrent++">Loadmore</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- single-post
+        ================================================= -->
+        <div id="single-post" v-show="canShowSinglePost">
+            <div>
+                <h1>{{post.title}}</h1>
+                <div>{{post.content}}</div>
+                <div>
+                    <button class="btn btn-default" @click="post = {}">Back</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="vendor/vue/vue.min.js"></script>
+    <script src="vendor/vue-router/vue-router.min.js"></script>
+    <script src="vendor/vue-resource/vue-resource.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
