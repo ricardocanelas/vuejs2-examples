@@ -1,60 +1,62 @@
 
-## E1
+## Basic
+
+### E1
 Hello World 
 
-## E2
+### E2
 Conditionals and Loops
 
-## E3
+### E3
 Events and Model
 
-## E4
+### E4
 Components
 
-## E5
+### E5
 Lifecycle
 
-## E6
+### E6
 Template Syntax
 
-## E7
+### E7
 Computed Properties and Watchers
 
-## E8
+### E8
 Class and Style Bindings
 
-## E9
+### E9
 Conditional Rendering
 
-## E10 
+### E10 
 List Rendering (v-for, filtered and sorted)
 
-## E11 
+### E11 
 Event Handling
 
-## E12 
+### E12 
 Form Input Bindings
 
-## E13 
+### E13 
 Components
 
-## E14
+### E14
 Components - Content Distribution with Slot
 
-## E15
+### E15
 Transitioning - Single Elements or Component 
 
-## E16
+### E16
 Transitioning - Between Elements and Components
 
-## E17
+### E17
 Transitioning - List Transitions
 
-## E18
+### E18
 Transitioning - State
 
-## E19
+### E19
 Transitioning - Render Functions
 
-## E20
+### E20
 Custom Directives
