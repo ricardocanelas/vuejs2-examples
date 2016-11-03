@@ -31,7 +31,6 @@ var vm = new Vue({
 
         list:function(){
             var postsTemp = [];
-            console.log(this.filterPosts.length);
             for(var i=0; i<this.filterPosts.length; i++){
                 if((i < this.postsPerPage * this.pageCurrent)) {
                     postsTemp.push(this.filterPosts[i]);

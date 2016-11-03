@@ -15,7 +15,7 @@
         ================================================= -->
         <header class="row">
             <div class="col-xs-12">
-                <h1>First Demo</h1>
+                <h1></h1>
             </div>
         </header>
 
@@ -36,15 +36,13 @@
             </div>
 
             <div id="posts" class="row">
-                <template v-for="post in list">
-                    <div class="col-xs-6 col-md-4 item" @click="showSinglePost(post)">
-                        <div class="item-container">
-                            <div class="title">{{ post.title }}</div>
-                            <div class="image"><img src="images/iceland.jpg"></div>
-                            <div class="excerpt">{{ post.excerpt }}</div>
-                        </div>
+                <div v-for="post in list" class="col-xs-6 col-md-4 item" @click="showSinglePost(post)">
+                    <div class="item-container">
+                        <div class="title">{{ post.title }}</div>
+                        <div class="image"><img src="images/iceland.jpg"></div>
+                        <div class="excerpt">{{ post.excerpt }}</div>
                     </div>
-                </template>
+                </div>
             </div>
 
             <div class="row" v-show="canShowLoadmoreButton">
