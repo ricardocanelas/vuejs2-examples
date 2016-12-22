@@ -24,7 +24,7 @@
                     <hr/>
                     <template v-for='example in examples'>
                         <a :href="example.url" class="list-group-item">
-                            {{example.title}} {{example.url}}
+                            {{example.title}} - {{example.description}}
                         </a>
                     </template>
                 </div>
@@ -37,7 +37,7 @@
                     <hr/>
                     <template v-for='demo in demos'>
                         <a :href="demo.url" class="list-group-item">
-                            {{demo.title}} {{demo.url}}
+                            {{demo.title}} - {{demo.description}}
                         </a>
                     </template>
                 </div>
@@ -51,30 +51,30 @@
             el: '#app',
             data: {
                 examples: [
-                    {title:'Example 1', url:'basic/e1/index.html', description: ''},
-                    {title:'Example 2', url:'basic/e2/index.html', description: ''},
-                    {title:'Example 3', url:'basic/e3/index.html', description: ''},
-                    {title:'Example 4', url:'basic/e4/index.html', description: ''},
-                    {title:'Example 5', url:'basic/e5/index.html', description: ''},
-                    {title:'Example 6', url:'basic/e6/index.html', description: ''},
-                    {title:'Example 7', url:'basic/e7/index.html', description: ''},
-                    {title:'Example 8', url:'basic/e8/index.html', description: ''},
-                    {title:'Example 9', url:'basic/e9/index.html', description: ''},
-                    {title:'Example 10', url:'basic/e10/index.html', description: ''},
-                    {title:'Example 11', url:'basic/e11/index.html', description: ''},
-                    {title:'Example 12', url:'basic/e12/index.html', description: ''},
-                    {title:'Example 13', url:'basic/e13/index.html', description: ''},
-                    {title:'Example 14', url:'basic/e14/index.html', description: ''},
-                    {title:'Example 15', url:'basic/e15/index.html', description: ''},
-                    {title:'Example 16', url:'basic/e16/index.html', description: ''},
-                    {title:'Example 17', url:'basic/e17/index.html', description: ''},
-                    {title:'Example 18', url:'basic/e18/index.html', description: ''},
-                    {title:'Example 19', url:'basic/e19/index.html', description: ''},
-                    {title:'Example 20', url:'basic/e20/index.html', description: ''}
+                    {title:'Example 01', url:'basic/e1/index.html',  description: 'Hello World'},
+                    {title:'Example 02', url:'basic/e2/index.html',  description: 'Conditionals and Loops'},
+                    {title:'Example 03', url:'basic/e3/index.html',  description: 'Events and Model'},
+                    {title:'Example 04', url:'basic/e4/index.html',  description: 'Components'},
+                    {title:'Example 05', url:'basic/e5/index.html',  description: 'Lifecycle'},
+                    {title:'Example 06', url:'basic/e6/index.html',  description: 'Template Syntax'},
+                    {title:'Example 07', url:'basic/e7/index.html',  description: 'Computed Properties and Watchers'},
+                    {title:'Example 08', url:'basic/e8/index.html',  description: 'Class and Style Bindings'},
+                    {title:'Example 09', url:'basic/e9/index.html',  description: 'Conditional Rendering'},
+                    {title:'Example 10', url:'basic/e10/index.html', description: 'List Rendering (v-for, filtered and sorted)'},
+                    {title:'Example 11', url:'basic/e11/index.html', description: 'Event Handling'},
+                    {title:'Example 12', url:'basic/e12/index.html', description: 'Form Input Bindings'},
+                    {title:'Example 13', url:'basic/e13/index.html', description: 'Components'},
+                    {title:'Example 14', url:'basic/e14/index.html', description: 'Components - Content Distribution with Slot'},
+                    {title:'Example 15', url:'basic/e15/index.html', description: 'Transitioning - Single Elements or Component'},
+                    {title:'Example 16', url:'basic/e16/index.html', description: 'Transitioning - Between Elements and Components'},
+                    {title:'Example 17', url:'basic/e17/index.html', description: 'Transitioning - List Transitions'},
+                    {title:'Example 18', url:'basic/e18/index.html', description: 'Transitioning - State'},
+                    {title:'Example 19', url:'basic/e19/index.html', description: 'Transitioning - Render Functions'},
+                    {title:'Example 20', url:'basic/e20/index.html', description: 'Custom Directives'}
                 ],
 
                 demos: [
-                    {title:'Demo 1', url:'demo/d1/index.html', description: ''},
+                    {title:'Demo 1', url:'demo/d1/index.html', description: 'Filtering posts'},
                 ]
             }
         })
