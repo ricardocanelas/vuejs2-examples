@@ -1,64 +1,33 @@
 
-[https://ricardocanelas.github.io/vuejs2-examples](https://ricardocanelas.github.io/vuejs2-examples)
+Online: [https://ricardocanelas.github.io/vuejs2-examples](https://ricardocanelas.github.io/vuejs2-examples)
 
 ## Basic
 
-### E1
-Hello World 
+Folder               | Description
+-------------------- | -------------
+Basic / Example 01    | Hello World
+Basic / Example 02    | Conditionals and Loops
+Basic / Example 03    | Events and Model
+Basic / Example 04    | Components
+Basic / Example 05    | Lifecycle
+Basic / Example 06    | Template Syntax
+Basic / Example 07    | Computed Properties and Watchers
+Basic / Example 08    | Class and Style Bindings
+Basic / Example 09    | Conditional Rendering
+Basic / Example 10   | List Rendering (v-for, filtered and sorted)
+Basic / Example 11   | Event Handling
+Basic / Example 12   | Form Input Bindings
+Basic / Example 13   | Components
+Basic / Example 14   | Components - Content Distribution with Slot
+Basic / Example 15   | Transitioning - Single Elements or Component
+Basic / Example 16   | Transitioning - Between Elements and Components
+Basic / Example 17   | Transitioning - List Transitions
+Basic / Example 18   | Transitioning - State
+Basic / Example 19   | Transitioning - Render Functions
+Basic / Example 20   | Custom Directives
 
-### E2
-Conditionals and Loops
+## Demo
 
-### E3
-Events and Model
-
-### E4
-Components
-
-### E5
-Lifecycle
-
-### E6
-Template Syntax
-
-### E7
-Computed Properties and Watchers
-
-### E8
-Class and Style Bindings
-
-### E9
-Conditional Rendering
-
-### E10 
-List Rendering (v-for, filtered and sorted)
-
-### E11 
-Event Handling
-
-### E12 
-Form Input Bindings
-
-### E13 
-Components
-
-### E14
-Components - Content Distribution with Slot
-
-### E15
-Transitioning - Single Elements or Component 
-
-### E16
-Transitioning - Between Elements and Components
-
-### E17
-Transitioning - List Transitions
-
-### E18
-Transitioning - State
-
-### E19
-Transitioning - Render Functions
-
-### E20
-Custom Directives
+Folder       | Description
+-------------| -------------
+Demo / 01    | Filtering posts
