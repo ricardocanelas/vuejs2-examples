@@ -5,15 +5,15 @@ Online: [https://ricardocanelas.github.io/vuejs2-examples](https://ricardocanela
 
 Folder               | Description
 -------------------- | -------------
-Basic / Example 01    | Hello World
-Basic / Example 02    | Conditionals and Loops
-Basic / Example 03    | Events and Model
-Basic / Example 04    | Components
-Basic / Example 05    | Lifecycle
-Basic / Example 06    | Template Syntax
-Basic / Example 07    | Computed Properties and Watchers
-Basic / Example 08    | Class and Style Bindings
-Basic / Example 09    | Conditional Rendering
+Basic / Example 01   | Hello World
+Basic / Example 02   | Conditionals and Loops
+Basic / Example 03   | Events and Model
+Basic / Example 04   | Components
+Basic / Example 05   | Lifecycle
+Basic / Example 06   | Template Syntax
+Basic / Example 07   | Computed Properties and Watchers
+Basic / Example 08   | Class and Style Bindings
+Basic / Example 09   | Conditional Rendering
 Basic / Example 10   | List Rendering (v-for, filtered and sorted)
 Basic / Example 11   | Event Handling
 Basic / Example 12   | Form Input Bindings
