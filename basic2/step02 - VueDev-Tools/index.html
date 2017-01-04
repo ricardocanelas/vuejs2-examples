@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title> Step 2 - Setup Vue DevTools</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body{margin: 10px;}
+        input{margin-bottom: 10px;}
+    </style>
+</head>
+<body>
+
+    <ol>
+        <li>Open the Chrome browser</li>
+        <li>Get Vue DevTools on the Chrome Web Store,
+            <a href="https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd">here.</a>
+        </li>
+        <li>Go to chrome://extensions/</li>
+        <li>Enable [x] Allow access to file URLS </li>
+        <li>Open Inspect and select Vue tab</li>
+        <li>To go Console tab</li>
+        <li>Typing: app.message = "Hey";</li>
+    </ol>
+
+    <div id="root">
+        
+        <input type="text" v-model="message">
+    
+        <p>The value of the input is: {{ message }}.</p>
+
+    </div>
+
+<script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+
+<script>
+
+    var app = new Vue({
+        el: "#root",
+        data: {
+            message: "Hello World"
+        }
+    })
+
+</script>
+</body>
+</html>
