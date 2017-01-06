@@ -1,0 +1,69 @@
+<html>
+<head>
+    <title> Step 7 - Component # Modal</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.0/css/bulma.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 10px;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="root">
+
+    <message title="Hello World">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis
+        placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum
+        <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
+        sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et
+        sem eget, facilisis sodales sem.
+    </message>
+
+    <message title="Social Status" type="success">
+        Status can be determined in two ways. One can earn their social status by their own achievements, which is known
+        as achieved status. Alternatively, one can be placed in the stratification system by their inherited position,
+        which is called ascribed status.
+    </message>
+
+</div>
+
+<script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+
+<script>
+
+    Vue.component('message', {
+
+        props: {
+            title: { required: true},
+            type: { default: '' }
+        },
+
+        template: `
+            <article class="message" :class="type !== '' ? 'is-' + type : ''">
+                <div class="message-header">
+                   <p>{{ title }} {{ type_class }}</p>
+                   <button class="delete" @click="onCloseMessage"></button>
+                </div>
+                <div class="message-body">
+                    <slot></slot>
+                </div>
+            </article>
+        `,
+
+    });
+
+    var app = new Vue({
+
+        el: "#root",
+
+        data: {}
+    })
+
+</script>
+</body>
+</html>

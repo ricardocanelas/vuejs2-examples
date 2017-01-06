@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title> Step 6 - Components</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body{margin: 10px;}
+        input{margin-bottom: 10px;}
+    </style>
+</head>
+<body>
+
+    <div id="root">
+
+        <alert title="Hello World">Here is my slot element</alert>
+
+    </div>
+
+<script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+
+<script>
+
+    // --------------------------
+    // Alert Component
+    // --------------------------
+
+    Vue.component('alert', {
+
+        props: ['title'],
+
+        template: `
+            <div>
+
+                <div class="alert alert-info">
+
+                    <h1>{{ title }}</h1><br/>
+
+                    <b>It's an alert Component</b><br/>
+
+                    {{message}} <br/>
+
+                    <i>
+                        <slot></slot>
+                    </i>
+
+                </div>
+
+            </div>
+        `,
+
+        data: function(){
+            return {message:"A simple component."}
+        }
+
+    });
+
+
+
+    // --------------------------
+    // App
+    // --------------------------
+
+    var app = new Vue({
+
+        el: "#root",
+
+        data: {
+
+
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<html>
+<head>
+    <title> Step 5 - Computed Properties</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body{margin: 10px;}
+        input{margin-bottom: 10px;}
+    </style>
+</head>
+<body>
+
+    <div id="root">
+
+        <h3>All Tasks:</h3>
+
+        <ul>
+            <li v-for="task in tasks" v-text="task.description"></li>
+        </ul>
+
+        <h3>Incomplete Tasks:</h3>
+
+        <ul>
+            <li v-for="task in incompleteTasks" v-text="task.description"></li>
+        </ul>
+
+    </div>
+
+<script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+
+<script>
+
+    var app = new Vue({
+
+        el: "#root",
+
+        data: {
+
+            tasks: [
+
+                { description: 'Go to the store', completed: true},
+                { description: 'Read E-mails', completed: true},
+                { description: 'Write an article', completed: false},
+                { description: 'Cooking', completed: false},
+                { description: 'Clean room', completed: true},
+                { description: 'Buy a new shoes', completed: false},
+
+            ]
+
+        },
+
+        computed: {
+
+            incompleteTasks: function(){
+                return this.tasks.filter(function (task) {
+                    return ! task.completed;
+                });
+
+                // return this.tasks.filter(task => ! task.completed); // in ES2016
+            }
+
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title> Step 4 - Attribute and Class Binding </title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body{margin: 10px;}
+        input{margin-bottom: 10px;}
+        div.alert{display: none}
+        div.alert.active{display: block}
+    </style>
+</head>
+<body>
+
+    <div id="root">
+
+        <button class="btn" :title="mytitle" @click="isActive = !isActive">Hover Over Me</button>
+
+        <div class="alert alert-info" :class="{ 'active' : isActive }">Alert</div>
+
+    </div>
+
+<script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+
+<script>
+
+    var app = new Vue({
+
+        el: "#root",
+
+        data: {
+
+            mytitle: 'Now the title is being set through Javascript',
+
+            isActive: true
+
+        },
+    })
+
+</script>
+</body>
+</html>
