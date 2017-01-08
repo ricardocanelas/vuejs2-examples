@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title> Step 10 - Component # Event Dispatcher</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.0/css/bulma.min.css" rel="stylesheet">
+    <style>
+        body {  margin: 10px;}
+    </style>
+</head>
+<body>
+
+<div id="root" class="container">
+    
+    <comp></comp>
+
+    <comp></comp>
+    
+</div>
+
+
+<script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+
+<script>
+
+    window.Event = new Vue();
+
+    Vue.component("comp", {
+        template:`
+            <div>
+                <button @click="onClick">Click Here</button>
+            </div>
+        `,
+        methods:{
+            onClick: function(){
+                console.log("Clicked");
+                Event.$emit("comp.onClick", {message: 'hello'});
+            }
+        }
+    });
+
+    var app = new Vue({
+        el: "#root",
+        created: function(){
+            Event.$on("comp.onClick", function(data){
+                console.log("Do something");
+                console.log(data);
+            });
+        }
+    });
+
+
+    // Or..
+    // window.Event = new class {
+    //     constructor(){
+    //         this.vue = new Vue();
+    //     }
+    //     fire(event, data = null){
+    //         this.vue.$emit(event, data);
+    //     }
+    //     listen(event, callback){
+    //         this.vue.$on(event, callback);
+    //     }
+    // }
+    // Event.fire("comp.onClick");
+    // Event.listen("comp.onClick", function(){});
+
+</script>
+</body>
+</html>

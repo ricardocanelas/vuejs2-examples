@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title> Step 8 - Component # Modal</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.0/css/bulma.min.css" rel="stylesheet">
+    <style>
+        body {  margin: 10px;}
+    </style>
+</head>
+<body>
+
+<div id="root">
+
+    <modal v-if="showModal" @close="showModal = false">
+        <h1>Modal Title</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis
+        placerat ut, porta nec nulla.</p>
+    </modal>
+
+    <button @click="showModal = true">Show Modal</button>
+    
+</div>
+
+<script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+
+<script>
+
+    Vue.component('modal', {
+
+        template: `
+            <div class="modal is-active">
+                <div class="modal-background" @click="$emit('close')"></div>
+                <div class="modal-content">
+                    <div class="box">
+                        <slot></slot>
+                    </div>
+                </div>
+                <button class="modal-close" @click="$emit('close')"></button>
+            </div>
+        `,
+
+    });
+
+    var app = new Vue({
+
+        el: "#root",
+
+        data: {
+
+            showModal: false
+
+        }
+    })
+
+</script>
+</body>
+</html>
