@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title> Step 12 - Share State</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.0/css/bulma.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app1" class="container">
+
+    <h1 class="title">App #1</h1>
+
+    <input type="text" class="input is-large" v-model="shared.message">
+
+    <p>{{ shared.message }}</p>
+
+</div>
+
+<hr/>
+
+
+<div id="app2" class="container">
+
+    <h1 class="title">App #2</h1>
+
+    <p>{{ shared.message }}</p>
+
+</div>
+
+
+<script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
+
+<script>
+
+    let source = {
+        message: 'Hello Universe'
+    };
+
+
+    var app1 = new Vue({
+        el: "#app1",
+        data: {
+            shared: source
+        }
+    });
+
+
+    var app2 = new Vue({
+        el: "#app2",
+        data: {
+            shared: source
+        }
+    });
+
+
+</script>
+</body>
+</html>
