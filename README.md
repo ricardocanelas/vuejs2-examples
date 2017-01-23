@@ -1,5 +1,5 @@
 
-Online: [https://ricardocanelas.github.io/vuejs2-examples](https://ricardocanelas.github.io/vuejs2-examples)
+Please, view online: [https://ricardocanelas.github.io/vuejs2-examples](https://ricardocanelas.github.io/vuejs2-examples)
 
 ## Basic
 
@@ -25,6 +25,24 @@ Basic / Example 17   | Transitioning - List Transitions
 Basic / Example 18   | Transitioning - State
 Basic / Example 19   | Transitioning - Render Functions
 Basic / Example 20   | Custom Directives
+
+## Basic2
+
+Folder               | Description
+-------------------- | -------------
+Basic / Step 01      | Basic Data Binding
+Basic / Step 02      | VueDev-Tools
+Basic / Step 03      | Event Listeners
+Basic / Step 04      | Attribute and Class Binding
+Basic / Step 05      | Computed Properties
+Basic / Step 06      | Component / Basic
+Basic / Step 07      | Component / Message
+Basic / Step 08      | Component / Modal
+Basic / Step 09      | Component / Tabs
+Basic / Step 10      | Component / Event Dispatcher
+Basic / Step 11      | Named Slots
+Basic / Step 12      | Share State
+Basic / Step 13      | Routing
 
 ## Demo
 

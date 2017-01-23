@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title> Step 6 - Components</title>
+    <title> Step 6 - Component / Basic</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body{margin: 10px;}
@@ -24,33 +24,23 @@
     // --------------------------
 
     Vue.component('alert', {
-
         props: ['title'],
-
         template: `
             <div>
-
                 <div class="alert alert-info">
-
                     <h1>{{ title }}</h1><br/>
-
                     <b>It's an alert Component</b><br/>
-
                     {{message}} <br/>
-
                     <i>
                         <slot></slot>
                     </i>
-
                 </div>
-
             </div>
         `,
 
         data: function(){
             return {message:"A simple component."}
         }
-
     });
 
 
@@ -60,13 +50,7 @@
     // --------------------------
 
     var app = new Vue({
-
         el: "#root",
-
-        data: {
-
-
-        }
     })
 
 </script>

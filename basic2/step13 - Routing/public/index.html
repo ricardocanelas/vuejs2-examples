@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title> Step 13 - Routing</title>
+    <link href="dist/css/app.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="app">
+
+    <nav class="nav">
+        <div class="nav-left">
+            <a class="nav-item">
+                My Website
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="columns">
+            <div class="column is-4 ">
+                <aside class="menu">
+                    <ul class="menu-list">
+                        <router-link to="/" exact>Home</router-link>
+                        <router-link to="/About" >About</router-link>
+                        <router-link to="/Contact" >Contact</router-link>
+                    </ul>
+                </aside>
+            </div>
+            <div class="column is-8">
+                <router-view></router-view>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="dist/js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+[
+  {"id": "1", "local": "Germany", "phone": "+49 123456789"},
+  {"id": "2", "local": "Netherlands", "phone": "+31 123456789"},
+  {"id": "3", "local": "Greece", "phone": "+30 123456789"}
+]

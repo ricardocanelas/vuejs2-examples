@@ -15,12 +15,13 @@
         </header>
 
         <section class="row">
-            <div class="col-xs-8">
+            <div class="col-xs-4">
                 <div class="list-group">
                     <h3>
                         <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
                         Basic
                     </h3>
+                    <small> (inspiration by VueJS.org)</small>
                     <hr/>
                     <template v-for='example in examples'>
                         <a :href="example.url" class="list-group-item">
@@ -28,12 +29,29 @@
                         </a>
                     </template>
                 </div>
-            </div><div class="col-xs-4">
+            </div>
+            <div class="col-xs-4">
+                <div class="list-group">
+                    <h3>
+                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                        Basic 2
+                    </h3>
+                    <small>(inspiration by Laracasts)</small>
+                    <hr/>
+                    <template v-for='example in examples2'>
+                        <a :href="example.url" class="list-group-item">
+                            {{example.title}} - {{example.description}}
+                        </a>
+                    </template>
+                </div>
+            </div>
+            <div class="col-xs-4">
                 <div class="list-group">
                     <h3>
                         <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
                         Demo
                     </h3>
+                    <small>(..</small>
                     <hr/>
                     <template v-for='demo in demos'>
                         <a :href="demo.url" class="list-group-item">
@@ -43,7 +61,12 @@
                 </div>
             </div>
         </section>
+
+        <hr/>
+
+        <p>By <a href="http://www.ricardocanelas.com">Ricardo Canelas</a></p>
     </div>
+
 
     <script src="https://unpkg.com/vue@2.0.1/dist/vue.min.js"></script>
     <script>
@@ -73,8 +96,26 @@
                     {title:'Example 20', url:'basic/e20/index.html', description: 'Custom Directives'}
                 ],
 
+                examples2: [
+                    {title:'Step 01', url:'basic2/step01 - Basic Data Binding/index.html',              description: 'Basic Data Binding'},
+                    {title:'Step 02', url:'basic2/step02 - VueDev-Tools/index.html',                    description: 'VueDev-Tools'},
+                    {title:'Step 03', url:'basic2/step03 - Event Listeners/index.html',                 description: 'Event Listeners'},
+                    {title:'Step 04', url:'basic2/step04 - Attribute and Class Binding/index.html',     description: 'Attribute and Class Binding'},
+                    {title:'Step 05', url:'basic2/step05 - Computed Properties/index.html',             description: 'Computed Properties'},
+                    {title:'Step 06', url:'basic2/step06 - Component - Basic/index.html',               description: 'Component / Basic'},
+                    {title:'Step 07', url:'basic2/step07 - Component - Message/index.html',             description: 'Component / Message'},
+                    {title:'Step 08', url:'basic2/step08 - Component - Modal/index.html',               description: 'Component / Modal'},
+                    {title:'Step 09', url:'basic2/step09 - Component - Tabs/index.html',                description: 'Component / Tabs'},
+                    {title:'Step 10', url:'basic2/step10 - Component - Event Dispatcher/index.html',    description: 'Component / Event Dispatcher'},
+                    {title:'Step 11', url:'basic2/step11 - Named Slots/index.html',                     description: 'Named Slots'},
+                    {title:'Step 12', url:'basic2/step12 - Share State/index.html',                     description: 'Share State'},
+                    {title:'Step 13', url:'basic2/step13 - Routing/public/index.html',                  description: 'Routing'},
+                ],
+
+
                 demos: [
                     {title:'Demo 1', url:'demo/d1/index.html', description: 'Filtering posts'},
+                    {title:'Demo 2', url:'basic2/step13 - Routing/public/index.html', description: 'Routing'},
                 ]
             }
         })
