@@ -1,0 +1,73 @@
+[
+  {"en":"Good morning/ Good afternoon",
+    "pl":"Dzień dobry",
+    "mp3":"mp3/bas1-1.mp3"},
+
+  {"en":"Good evening",
+    "pl":"Dobry wieczór",
+    "mp3":"mp3/bas1-2.mp3"},
+
+  {"en":"Good night",
+    "pl":"Dobranoc",
+    "mp3":"mp3/bas1-3.mp3"},
+
+  {"en":"Hi",
+    "pl":"ej!/Cześć!",
+    "mp3":"mp3/bas1-4.mp3"},
+
+  {"en":"Yes",
+    "pl":"Tak",
+    "mp3":"mp3/bas1-5.mp3"},
+
+  {"en":"No",
+    "pl":"Nie",
+    "mp3":"mp3/bas1-6.mp3"},
+
+  {"en":"Please",
+    "pl":"Proszę",
+    "mp3":"mp3/bas1-7.mp3"},
+
+  {"en":"Nice to meet you",
+    "pl":"Miło mi Cię poznać. (informal) - Miło mi Pana/Panią (formal)",
+    "mp3":"mp3/bas1-8.mp3"},
+
+  {"en":"Nice to meet you",
+    "pl":"Miło mi Pana/Panią (formal)",
+    "mp3":"mp3/bas1-9.mp3"},
+
+  {"en":"My name is...",
+    "pl":"Mam na imię...",
+    "mp3":"mp3/bas1-10.mp3"},
+
+  {"en":"What's your first name?",
+    "pl":"Jak masz na imię?",
+    "mp3":"mp3/bas1-11.mp3"},
+
+  {"en":"What is your name?",
+    "pl":"Jak sie nazywasz? - Jak sie Pan/Pani nazywa?(formal)",
+    "mp3":"mp3/bas1-12.mp3"},
+
+  {"en":"What is your name?",
+    "pl":"Jak sie Pan/Pani nazywa?(formal)",
+    "mp3":"mp3/bas1-13.mp3"},
+
+  {"en":"We're from...",
+    "pl":"Jesteśmy z...",
+    "mp3":"mp3/bas1-14.mp3"},
+
+  {"en":"I'm from...",
+    "pl":"Jestem z...",
+    "mp3":"mp3/bas1-15.mp3"},
+
+  {"en":"Thank you",
+    "pl":"Dziekuję",
+    "mp3":"mp3/bas1-16.mp3"},
+
+  {"en":"Thank you very much",
+    "pl":"Dziekuję bardzo",
+    "mp3":"mp3/bas1-17.mp3"},
+
+  {"en":"No, thanks",
+    "pl":"Nie, dziękuję",
+    "mp3":"mp3/bas1-18.mp3"}
+]
